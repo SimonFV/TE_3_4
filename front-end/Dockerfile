@@ -5,9 +5,10 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 RUN npm install --silent
+RUN npm install bootstrap
 # Copy app source code
 COPY . .
 
 #Expose port and start application
-EXPOSE 80
+EXPOSE 3000
 CMD ["npm", "start"]

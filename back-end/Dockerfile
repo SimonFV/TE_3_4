@@ -3,12 +3,12 @@ FROM node:8
 WORKDIR /usr/src/app
 
 COPY package*.json ./
-COPY npm-shrinkwrap.json ./
 
 RUN npm install
+RUN npm install cors --save
 
 COPY . .
 
-EXPOSE 3000
+EXPOSE 8080
 
 CMD ["npm", "start"]

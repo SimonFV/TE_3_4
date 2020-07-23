@@ -1,15 +1,19 @@
 version: '3'
 services:
-  api:
-    container_name: docker-node-mongo
-    restart: always
-    build: .
+  ui:
+    build: ./front-end
     ports:
       - '3000:3000'
-    links:
+    depends_on:
+      - api
+  api:
+    restart: always
+    build: ./back-end
+    ports:
+      - '8080:8080'
+    depends_on:
       - mongo
   mongo:
-    container_name: mongo
     image: mongo
     ports:
       - '27017:27017'
